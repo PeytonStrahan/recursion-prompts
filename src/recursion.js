@@ -5,11 +5,35 @@
 // Example:  5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5);  // 120
 var factorial = function(n) {
+  let nEx = n;//Creates a variable equal to the input variable
+  if(n < 0){//returns null if the input number is negative
+    return null;
+  }
+  if (n === 0){//checks if n is 0 and ends the function if it is
+    return 1;
+  }
+  else{
+    n = n - 1;//decreases the original variable by 1
+  }
+
+  return nEx * factorial(n);//recalls the function in a way that multiplies nEx by itself until n reaches 0
 };
 
 // 2. Compute the sum of an array of integers.
 // Example:  sum([1, 2, 3, 4, 5, 6]);  // 21
 var sum = function(array) {
+  let ara = [...array];//creates a new array with the contents of the input array
+  if(ara.length === 1){//returns the sum when the length of ara is condensed down to 1, ending the function
+    return ara[0];
+  }
+  if(ara.length < 1){//returns 0 when given an empty array
+    return 0;
+  }
+  if(ara.length > 1){//adds the front 2 numbers of an array, sets the result to the array's second number, and deletes the first number in the array
+    ara[1] = ara[0] + ara[1];
+    ara.shift();
+  }
+  return sum(ara);//recalls function to repeat the process
 };
 
 // 3. Sum all numbers in an array containing nested arrays.
@@ -19,12 +43,35 @@ var arraySum = function(array) {
 
 // 4. Check if a number is even.
 var isEven = function(n) {
+  if(n === 0){//returns true if the number is even (meaning the number has no remainder when divided by 2) and ends the function
+    return true;
+  }
+  else if (n === -1 || n === 1){//returns false if the number is odd (meaning the number has a remainder of -1 or 1 when divided by 2) and ends the function
+    return false;
+  }
+  if(n > 0){//decreases the number by 2 when it is greater than 0 and not 1
+    return isEven(n - 2);
+  }
+  else if (n < 0){//increases the number by 2 when it is lesser than 0 and not 1
+    return isEven(n + 2);
+  }
 };
 
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n) {
+  let nEx = n;//Creates a variable equal to the input variable
+  if(n < 0){//returns null if the input number is negative
+    n = n + 1;
+  }
+  else{
+    n = n - 1;//decreases the original variable by 1
+  }
+  if (n === 0){//checks if n is 0 and ends the function if it is
+    return 1;
+  }
+  return nEx + sumBelow(n);//recalls the function in a way that adds nEx by itself until n reaches 0
 };
 
 // 6. Get the integers in range (x, y).
