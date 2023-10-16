@@ -82,7 +82,7 @@ var range = function (x, y, arr = []) {
 
   if (x === y) {
     arr.pop()
-    console.log(arr)
+    //console.log(arr)
     return arr
   }
   if (x > y) {
@@ -111,9 +111,10 @@ var exponent = function (base, exp) {
   }
   
   if (exp > 0) {
-    return base * exponent(base, exp)
+    return base * exponent(base, exp - 1)
   } else { 
-
+    let bain = base / exponent(base, exp + 1)
+    return 1 / bain;
   }
 }
 
@@ -122,16 +123,58 @@ var exponent = function (base, exp) {
 // powerOfTwo(1); // true
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
-var powerOfTwo = function (n) {
+var powerOfTwo = function (n, x = n, y = 2) {
+  //console.log("n: " + n + " x: " + x + " y: " + y)
+  if(n === 1){
+    return true;
+  }
+  if (y === n) {
+    return true;
+  }
+  else if (x === 0){
+    return false;
+  }
+  if (x > 0) {
+    y = y * 2
+    x--
+  } 
+  return powerOfTwo(n, x, y);
 };
 
 // 9. Write a function that accepts a string a reverses it.
-var reverse = function (string) {
+var reverse = function (string, x = string.length, gnirts = "") {
+  //console.log(gnirts);
+  if (x === 0){
+    //console.log(gnirts);
+    return gnirts;
+  }
+  if (x > 0){
+    x--;
+    gnirts = gnirts + string[x];
+  }
+  return reverse(string, x, gnirts);
 };
 
 // 10. Write a function that determines if a string is a palindrome.
-var palindrome = function (string) {
+var palindrome = function (string, x = string.replace(/\s/g, "").length, gnirts = "") {
+  //console.log(gnirts);
+  //console.log(string.toLowerCase());
+  gnirts = gnirts.replace(/\s/g, "").toLowerCase();
+  string = string.replace(/\s/g, "").toLowerCase();
+  //console.log(gnirts);
+
+  if (x === 0){
+    //console.log(gnirts);
+    //console.log(string);
+    return gnirts === string;
+  }
+  if (x > 0){
+    x--;
+    gnirts = gnirts + string[x];
+  }
+  return palindrome(string, x, gnirts);
 };
+//console.log(palindrome('Rotor'));
 
 // 11. Write a function that returns the remainder of x divided by y without using the
 // modulo (%) operator.
@@ -144,7 +187,26 @@ var modulo = function (x, y) {
 // 12. Write a function that multiplies two numbers without using the * operator  or
 // JavaScript's Math object.
 // ATTENTION DO NOT LEAVE COMMENTS IN THIS FUNCTION. The test is looking for any ('/').
-var multiply = function (x, y) {
+var multiply = function (x, y, holder1 = x, holder2 = y) {
+  if (x === 1){
+    return y;
+  }
+  if (y === 0 || x === 0){
+    return 0;
+  }
+  if (y === 1){
+    return x;
+  }
+  x = x + holder1
+  y--
+  let answer = multiply(x, y, holder1, holder2);
+  if ((holder1 < 0 && holder2 > 0) || (holder2 < 0 && holder1 > 0)){
+    console.log(answer)
+  answer = (answer - answer) - answer
+  return answer
+  } else {
+    return answer;
+  }
 };
 
 // 13. Write a function that divides two numbers without using the / operator  or
