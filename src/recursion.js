@@ -109,10 +109,10 @@ var exponent = function (base, exp) {
   if (exp === 1) {
     return base
   }
-  
+
   if (exp > 0) {
     return base * exponent(base, exp - 1)
-  } else { 
+  } else {
     let bain = base / exponent(base, exp + 1)
     return 1 / bain;
   }
@@ -125,30 +125,30 @@ var exponent = function (base, exp) {
 // powerOfTwo(10); // false
 var powerOfTwo = function (n, x = n, y = 2) {
   //console.log("n: " + n + " x: " + x + " y: " + y)
-  if(n === 1){
+  if (n === 1) {
     return true;
   }
   if (y === n) {
     return true;
   }
-  else if (x === 0){
+  else if (x === 0) {
     return false;
   }
   if (x > 0) {
     y = y * 2
     x--
-  } 
+  }
   return powerOfTwo(n, x, y);
 };
 
 // 9. Write a function that accepts a string a reverses it.
 var reverse = function (string, x = string.length, gnirts = "") {
   //console.log(gnirts);
-  if (x === 0){
+  if (x === 0) {
     //console.log(gnirts);
     return gnirts;
   }
-  if (x > 0){
+  if (x > 0) {
     x--;
     gnirts = gnirts + string[x];
   }
@@ -163,12 +163,12 @@ var palindrome = function (string, x = string.replace(/\s/g, "").length, gnirts 
   string = string.replace(/\s/g, "").toLowerCase();
   //console.log(gnirts);
 
-  if (x === 0){
+  if (x === 0) {
     //console.log(gnirts);
     //console.log(string);
     return gnirts === string;
   }
-  if (x > 0){
+  if (x > 0) {
     x--;
     gnirts = gnirts + string[x];
   }
@@ -188,22 +188,26 @@ var modulo = function (x, y) {
 // JavaScript's Math object.
 // ATTENTION DO NOT LEAVE COMMENTS IN THIS FUNCTION. The test is looking for any ('/').
 var multiply = function (x, y, holder1 = x, holder2 = y) {
-  if (x === 1){
+
+  if (x === 1) {
     return y;
   }
-  if (y === 0 || x === 0){
+  if (y === 0 || x === 0) {
     return 0;
   }
-  if (y === 1){
+  if (y === 1) {
     return x;
   }
   x = x + holder1
   y--
+  
   let answer = multiply(x, y, holder1, holder2);
-  if ((holder1 < 0 && holder2 > 0) || (holder2 < 0 && holder1 > 0)){
-    console.log(answer)
-  answer = (answer - answer) - answer
-  return answer
+
+  if (holder2 < 0 && holder1 > 0) {
+
+    answer = (answer - answer) - answer
+    return answer
+
   } else {
     return answer;
   }
