@@ -197,24 +197,24 @@ var multiply = function (x, y, holder1 = x, holder2 = y) {
   }
   if (y === 1 || y === -1) {
     if (holder2 < 0 && holder1 > 0) {
-      console.log("fdivfjnsh poo")
+
       x = (x - x) - x
       return x
-  
-    } else if (holder2 > 0 && holder1 < 0 || holder2 > 0 && holder1 > 0){
+
+    } else if (holder2 > 0 && holder1 < 0 || holder2 > 0 && holder1 > 0) {
       return x;
-    } else if (holder2 < 0 && holder1 < 0){
+    } else if (holder2 < 0 && holder1 < 0) {
       x = (x - x) - x
       return x
     }
   }
   x = x + holder1
-  if(y < 0){
+  if (y < 0) {
     y++
-  }else if(y > 0){
+  } else if (y > 0) {
     y--
   }
-  
+
   let answer = multiply(x, y, holder1, holder2);
   return answer;
 };
@@ -241,21 +241,21 @@ var compareStr = function (str1, str2, i = 0) {
   // if(str1.length !== str2.length){
   //   return false
   // }
-  if (str1[i] === str2[i]){
+  if (str1[i] === str2[i]) {
     i++
-    if(str1.length >= str2.length){
-      if(i >= str1.length){
+    if (str1.length >= str2.length) {
+      if (i >= str1.length) {
         return true;
       }
     }
 
-    if(str1.length < str2.length){
-      if(i >= str2.length){
+    if (str1.length < str2.length) {
+      if (i >= str2.length) {
         return true;
       }
     }
     return compareStr(str1, str2, i)
-  }else{
+  } else {
     return false
   }
 };
@@ -264,7 +264,7 @@ var compareStr = function (str1, str2, i = 0) {
 // occupies an index of the array.
 var createArray = function (str, newArr = [], i = 0) {
   newArr.push(str[i]);
-  if (str[i] === str[str.length - 1]){
+  if (str[i] === str[str.length - 1]) {
     return newArr;
   }
   i++
@@ -289,7 +289,7 @@ var reverseArr = function (array, x = array.length, yarra = []) {
 // buildList(0,5) // [0,0,0,0,0]
 // buildList(7,3) // [7,7,7]
 var buildList = function (value, length, newArr = []) {
-  if(length === 0){
+  if (length === 0) {
     return newArr;
   }
   newArr.push(value);
@@ -301,10 +301,10 @@ var buildList = function (value, length, newArr = []) {
 // countOccurrence([2,7,4,4,1,4], 4) // 3
 // countOccurrence([2,'banana',4,4,1,'banana'], 'banana') // 2
 var countOccurrence = function (array, value, i = 0, count = 0) {
-  if(array[i] === value){
+  if (array[i] === value) {
     count++
   }
-  if(i === array.length - 1){
+  if (i === array.length - 1) {
     return count;
   }
   i++
@@ -315,7 +315,7 @@ var countOccurrence = function (array, value, i = 0, count = 0) {
 // rMap([1,2,3], timesTwo); // [2,4,6]
 var rMap = function (array, callback, i = 0, newArr = []) {
   newArr.push(callback(array[i]))
-  if(i === array.length - 1){
+  if (i === array.length - 1) {
     return newArr;
   }
   i++
@@ -354,23 +354,23 @@ var fibonacci = function (n) {
 // nthFibo(5); // 5
 // nthFibo(7); // 13
 // nthFibo(3); // 2
-var nthFibo = function (n, newArr = [0,1], i = 1) {
-  if(n < 0){
+var nthFibo = function (n, newArr = [0, 1], i = 1) {
+  if (n < 0) {
     return null;
   }
   newArr.push(newArr[newArr.length - 1] + newArr[newArr.length - 2])
   i++
-if(i >= n){
-  return newArr[n];
-}
-return nthFibo(n, newArr, i)
+  if (i >= n) {
+    return newArr[n];
+  }
+  return nthFibo(n, newArr, i)
 };
 
 // 26. Given an array of words, return a new array containing each word capitalized.
 // var words = ['i', 'am', 'learning', 'recursion'];
 // capitalizedWords(words); // ['I', 'AM', 'LEARNING', 'RECURSION']
 var capitalizeWords = function (input, i = 0) {
-  if(i === input.length){
+  if (i === input.length) {
     return input
   }
   input[i] = input[i].toUpperCase();
@@ -381,11 +381,11 @@ var capitalizeWords = function (input, i = 0) {
 // 27. Given an array of strings, capitalize the first letter of each index.
 // capitalizeFirst(['car', 'poop', 'banana']); // ['Car', 'Poop', 'Banana']
 var capitalizeFirst = function (array, i = 0) {
-  if(i === array.length){
+  if (i === array.length) {
     return array
   }
   let word = array[i];
-  console.log(word)
+
   array[i] = word[0].toUpperCase() + word.substring(1);
   i++
   return capitalizeFirst(array, i)
@@ -411,12 +411,12 @@ var flatten = function (arrays) {
 // 30. Given a string, return an object containing tallies of each letter.
 // letterTally('potato'); // {'p':1, 'o':2, 't':2, 'a':1}
 var letterTally = function (str, obj = {}, i = 0) {
-  if(i === str.length){
+  if (i === str.length) {
     return obj;
   }
-  if(!obj[str[i]]){
+  if (!obj[str[i]]) {
     obj[str[i]] = 1
-  } else{
+  } else {
     obj[str[i]]++
   }
   i++
@@ -429,19 +429,19 @@ var letterTally = function (str, obj = {}, i = 0) {
 // Example: compress([1, 2, 2, 3, 4, 4, 5, 5, 5]) // [1, 2, 3, 4, 5]
 // Example: compress([1, 2, 2, 3, 4, 4, 2, 5, 5, 5, 4, 4]) // [1, 2, 3, 4, 2, 5, 4]
 var compress = function (list, i = 0, obj = {}) {
-  if(i === list.length){
+  if (i === list.length) {
     return list
   }
-  if(!obj[list[i]]){
+  if (!obj[list[i]]) {
     obj[list[i]] = 1
     i++
-  } else if(list[i] !== list[i - 1]){
+  } else if (list[i] !== list[i - 1]) {
     obj[list[i]]++
     i++
   }
-  else{
+  else {
     obj[list[i]]++
-    list.splice(i,1);
+    list.splice(i, 1);
   }
   return compress(list, i, obj)
 };
@@ -456,17 +456,17 @@ var augmentElements = function (array, aug) {
 // minimizeZeroes([2,0,0,0,1,4]) // [2,0,1,4]
 // minimizeZeroes([2,0,0,0,1,0,0,4]) // [2,0,1,0,4]
 var minimizeZeroes = function (array, i = 0, obj = {}) {
-  if(i === array.length){
+  if (i === array.length) {
     return array
   }
-  if(!obj[array[i]] && array[i] === 0){
+  if (!obj[array[i]] && array[i] === 0) {
     obj[array[i]] = 1
     i++
   }
-  else if(array[i] === 0 && array[i-1] === 0){
+  else if (array[i] === 0 && array[i - 1] === 0) {
     obj[array[i]]++
-    array.splice(i,1);
-  } else{
+    array.splice(i, 1);
+  } else {
     i++
   }
   return minimizeZeroes(array, i, obj)
@@ -477,13 +477,43 @@ var minimizeZeroes = function (array, i = 0, obj = {}) {
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
 var alternateSign = function (array, i = 0) {
+  if (i === array.length) {
+    return array
+  }
+
+  if (i === 0 && array[i] < 0) {
+    array[i] = array[i] * -1
+  } else if (array[i - 1] < 0 && array[i] < 0) {
+    array[i] = array[i] * -1
+  } else if (array[i - 1] > 0 && array[i] > 0) {
+    array[i] = array[i] * -1
+  }
+  i++
   return alternateSign(array, i)
 };
 
 // 35. Given a string, return a string with digits converted to their word equivalent.
 // Assume all numbers are single digits (less than 10).
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
-var numToText = function (str) {
+var numToText = function (str, i = 0) {
+  if (i === str.length) {
+    return str
+  }
+  str = str.replace(1, 'one')
+  str = str.replace(2, 'two')
+  str = str.replace(3, 'three')
+  str = str.replace(4, 'four')
+  str = str.replace(5, 'five')
+  str = str.replace(6, 'six')
+  str = str.replace(7, 'seven')
+  str = str.replace(8, 'eight')
+  str = str.replace(9, 'nine')
+  str = str.replace(0, 'zero')
+
+  if (i < str.length) {
+    i++
+    return numToText(str, i)
+  }
 };
 
 // *** EXTRA CREDIT ***
